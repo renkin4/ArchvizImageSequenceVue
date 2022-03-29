@@ -49,7 +49,6 @@ export default defineComponent({
             allLoadedImages[index] = (e.target as HTMLImageElement); 
             emit('loadingProgress', allLoadedImages.length / assetLength); 
             loadingProgress.forEach(cb => cb(allLoadedImages.length / assetLength));
-
             if(allLoadedImages.length >= assetLength){
                 finishLoading.forEach(cb => cb(allLoadedImages));
                 emit('finishLoading', allLoadedImages);  

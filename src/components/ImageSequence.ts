@@ -15,14 +15,14 @@ interface Vector2 {
 }
 
 export default defineComponent({
-    name: 'ImageSequenceVue',
+    name: 'ImageSequence',
     props:{
         height : { type : String, default : '100' },
         width : { type : String, default : '100' },
         bindInputs  : Boolean,
     },
     inheritAttrs: false,
-    setup(props, { attrs }) : ImageSequenceSetupInterface{
+    setup(props, { attrs, expose }) {
         let imgSrc = ref('');
         let loadedImages : HTMLImageElement[] = [];
         let currentImageIndex = 0;
@@ -45,6 +45,7 @@ export default defineComponent({
 
             loadedImages = allImages;
             imgSrc.value = allImages[0].src;
+            console.log(imgSrc.value);
         }
 
         if(preload !== undefined){ 
@@ -176,29 +177,44 @@ export default defineComponent({
                 removeListeners();
         });
 
-        return {
+        expose({ 
             imgDiv,
             imgSrc,
             changeImage,
-        };
-    },
-    render() {
-        return [
-            h('div', 
-                { 
-                    class: 'image-wrapper',
-                    ref: 'imgDiv',
-                    style : `height:${this.height}%; width:${this.width}%`
-                },
-                [
-                    h('img', 
-                        { 
-                            src : this.imgSrc,
-                        }
-                    )
-                ]
-            )
-        ];
+        });
+
+        return () => h('div', {
+            class : 'image-wrapper',
+            ref: 'imgDiv',
+            style:`
+                height:${props.height}%; 
+                width:${props.width}%;
+                position: relative;
+                margin: auto; 
+                box-sizing: border-box;
+                top: 0;   
+                display: block;  
+            `
+        } ,[
+            h('img', {
+                src: imgSrc.value,
+                style : `
+                    position: absolute;
+                    z-index: -1;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left : 0; 
+                    object-fit: cover;
+                    user-drag: none;
+                    -webkit-user-drag: none;
+                    user-select: none;
+                    -moz-user-select: none;
+                    -webkit-user-select: none;
+                    -ms-user-select: none;
+                `
+            }),
+        ]);
     }
 });
  
