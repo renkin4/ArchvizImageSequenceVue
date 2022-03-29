@@ -1,11 +1,4 @@
-<template> 
-    <div class="image-wrapper" ref="imgDiv" :style="`height:${height}%; width:${width}%`">
-        <img :src="imgSrc" alt="" srcset="">
-    </div>
-</template>
-
-<script lang="ts">
-import { ComponentPublicInstance, defineComponent, inject, onMounted, onUnmounted, Ref, ref } from 'vue'
+import { ComponentPublicInstance, defineComponent, h, inject, onMounted, onUnmounted, Ref, ref } from 'vue'
 import { PreloadInjectKey } from './PreloadAssets';
 
 interface ImageSequenceSetupInterface {
@@ -189,32 +182,23 @@ export default defineComponent({
             changeImage,
         };
     },
+    render() {
+        return [
+            h('div', 
+                { 
+                    class: 'image-wrapper',
+                    ref: 'imgDiv',
+                    style : `height:${this.height}%; width:${this.width}%`
+                },
+                [
+                    h('img', 
+                        { 
+                            src : this.imgSrc,
+                        }
+                    )
+                ]
+            )
+        ];
+    }
 });
  
-</script>
-
-<style scoped>
-img{
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left : 0; 
-    object-fit: cover;
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-}
-
-.image-wrapper{
-    position: relative;
-    margin: auto; 
-    box-sizing: border-box;
-    top: 0;   
-    display: block;  
-}
-</style>

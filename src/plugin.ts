@@ -1,5 +1,5 @@
 import { App, createApp as _createApp } from 'vue'
-import ImageSequenceVue from './components/ImageSequence.vue'
+import ImageSequenceVue from './components/ImageSequence'
 import PreloadAssets from './components/PreloadAssets';
 
 export const YangAISPlugin = {
