@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 types
+
+# Ignoring this because is proprietary
+src/assets/
