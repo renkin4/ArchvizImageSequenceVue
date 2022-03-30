@@ -1,7 +1,6 @@
 {
   "name": "archviz-is-vue",
-  "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -25,7 +24,7 @@
   "types": "build/yang.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/renkin4/ArchvizImageSequenceVue/trois.git"
+    "url": "git+https://github.com/renkin4/ArchvizImageSequenceVue.git"
   },
   "keywords": [
     "image sequence",
