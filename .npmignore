@@ -1,11 +1,12 @@
 dist
 .vscode
-types
 .eslintrc.js
 .gitignore
 index.html
 rollup.config.js
 tsconfig.json
 vite.config.js
+
 tester
+types
 src/assets/
