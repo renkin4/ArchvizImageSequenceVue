@@ -1,19 +1,5 @@
 # Vue 3 + Typescript + Vite
 
-[![NPM Package][npm]][npm-url]
-[![Build Size][build-size]][build-size-url]
-[![NPM Downloads][npm-downloads]][npmtrends-url]
-[![Twitter][twitter]][twitter-url]
-
-[npm]: https://img.shields.io/npm/v/troisjs
-[npm-url]: https://www.npmjs.com/package/troisjs
-[build-size]: https://badgen.net/bundlephobia/minzip/troisjs
-[build-size-url]: https://bundlephobia.com/result?p=troisjs
-[npm-downloads]: https://img.shields.io/npm/dw/troisjs
-[npmtrends-url]: https://www.npmtrends.com/troisjs
-[twitter]: https://img.shields.io/twitter/follow/soju22?label=&style=social
-[twitter-url]: https://twitter.com/DeveloperYang
-
 This is vue component package. A very simple package that helps you setup a image sequence for architecture visualization purpose.  
 
 I made this package to help myself setup image sequence quickers and cleaner.  
