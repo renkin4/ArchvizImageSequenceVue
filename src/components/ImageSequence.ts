@@ -45,7 +45,6 @@ export default defineComponent({
 
             loadedImages = allImages;
             imgSrc.value = allImages[0].src;
-            console.log(imgSrc.value);
         }
 
         if(preload !== undefined){ 
@@ -99,11 +98,11 @@ export default defineComponent({
 
             // @ts-ignore
             if (event.touches && event.touches.length > 0) {
-            startPointerPosition.x = (<TouchEvent>event).touches[0].clientX;
-            startPointerPosition.y = (<TouchEvent>event).touches[0].clientY;
+                startPointerPosition.x = (<TouchEvent>event).touches[0].clientX;
+                startPointerPosition.y = (<TouchEvent>event).touches[0].clientY;
             } else {
-            startPointerPosition.x = (<MouseEvent>event).clientX;
-            startPointerPosition.y = (<MouseEvent>event).clientY;
+                startPointerPosition.x = (<MouseEvent>event).clientX;
+                startPointerPosition.y = (<MouseEvent>event).clientY;
             } 
 
             if(swapImageTimeHandler !== undefined){
@@ -114,12 +113,14 @@ export default defineComponent({
         let pointerMove = (event: TouchEvent | MouseEvent) => {
             // @ts-ignore
             if (event.touches && event.touches.length > 0) {
-            currentPointerPosition.x = (<TouchEvent>event).touches[0].clientX;
-            currentPointerPosition.y = (<TouchEvent>event).touches[0].clientY;
+                currentPointerPosition.x = (<TouchEvent>event).touches[0].clientX;
+                currentPointerPosition.y = (<TouchEvent>event).touches[0].clientY;
             } else {
-            currentPointerPosition.x = (<MouseEvent>event).clientX;
-            currentPointerPosition.y = (<MouseEvent>event).clientY;
+                currentPointerPosition.x = (<MouseEvent>event).clientX;
+                currentPointerPosition.y = (<MouseEvent>event).clientY;
             }  
+
+            console.log(currentPointerPosition);
 
             dir = Math.sign(currentPointerPosition.x - startPointerPosition.x);
             tryToSwapImage();
@@ -129,11 +130,11 @@ export default defineComponent({
 
             // @ts-ignore
             if (event.touches && event.touches.length > 0) {
-            endPointerPosition.x = (<TouchEvent>event).touches[0].clientX;
-            endPointerPosition.y = (<TouchEvent>event).touches[0].clientY;
+                endPointerPosition.x = (<TouchEvent>event).touches[0].clientX;
+                endPointerPosition.y = (<TouchEvent>event).touches[0].clientY;
             } else {
-            endPointerPosition.x = (<MouseEvent>event).clientX;
-            endPointerPosition.y = (<MouseEvent>event).clientY;
+                endPointerPosition.x = (<MouseEvent>event).clientX;
+                endPointerPosition.y = (<MouseEvent>event).clientY;
             }
 
             if(swapImageTimeHandler !== undefined){
@@ -145,7 +146,7 @@ export default defineComponent({
         let addListeners = () => {
             const imgDom : HTMLDivElement | undefined = imgDiv.value ?? undefined;
             if(!imgDom) return; 
-            
+
             imgDom.addEventListener('mousedown', pointerDown);
             imgDom.addEventListener('mouseup', pointerUp);
             imgDom.addEventListener('mousemove', pointerMove) ;
@@ -166,7 +167,7 @@ export default defineComponent({
             imgDom.removeEventListener('touchend', pointerUp) ; 
         }
 
-        onMounted(() => {
+        onMounted(() => { 
             if(props.bindInputs){ 
                 addListeners();
             }
@@ -185,7 +186,7 @@ export default defineComponent({
 
         return () => h('div', {
             class : 'image-wrapper',
-            ref: 'imgDiv',
+            ref: imgDiv,
             style:`
                 height:${props.height}%; 
                 width:${props.width}%;

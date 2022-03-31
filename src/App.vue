@@ -1,7 +1,7 @@
 <template> 
 <div class="wrapper">
   <PreloadAssets :assetsUrl="allImageUrl" @loading-progress="handleLoadingProgress" >
-    <ImageSequence />
+    <ImageSequence bindInputs />
   </PreloadAssets>
 </div>
 </template>
